@@ -11922,7 +11922,7 @@ function qFactory(nextTick, exceptionHandler) {
    */
   function all(promises) {
     var deferred = defer(),
-        counter = 0,
+        counter = 1,
         results = isArray(promises) ? [] : {};
 
     forEach(promises, function(promise, key) {
@@ -11937,7 +11937,7 @@ function qFactory(nextTick, exceptionHandler) {
       });
     });
 
-    if (counter === 0) {
+    if ((--counter) === 0) {
       deferred.resolve(results);
     }
 
